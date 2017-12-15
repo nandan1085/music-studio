@@ -22,8 +22,12 @@ class MusicStudioSeeder extends Seeder
             $studio->action_url = strtolower(str_replace(',', '', str_replace(' ', '-', $name)));
             $studio->address = $faker->address;
             $studio->website = $faker->url;
-            $studio->opening_time = $faker->time();
-            $studio->closing_time = $faker->time();
+            $time = $faker->time();
+            $diff = rand(2, 8);
+            $start = \Carbon\Carbon::createFromDate('2017', '12', '16')->setTimeFromTimeString($time)->setTimezone('Asia/Kolkata');
+            $end = \Carbon\Carbon::createFromDate('2017', '12', '16')->setTimeFromTimeString($faker->time())->addHours($diff)->setTimezone('Asia/Kolkata');
+            $studio->opening_time = $start;
+            $studio->closing_time = $end;
             $studio->save();
         }
     }

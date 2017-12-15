@@ -18,26 +18,30 @@ class StudioRepository
         return $studios;
     }
 
+    public function getStudios($per_page = 18){
+        return Studio::paginate($per_page);
+    }
+
     public function getMorningStudio($paginate = false, $perPage = 10){
-        $startTime = Carbon::createFromTime('05', '00', '00')->toTimeString();
+        $startTime = Carbon::createFromTime('05', '00', '00')->setTimezone('Asia/Kolkata')->toTimeString();
         $query = Studio::where([['opening_time', '<=', $startTime], ['closing_time', '>=', $startTime]]);
         return $paginate ? $query->paginate($perPage) : $query->take(3)->get();
     }
 
     public function getAfterNoonStudio($paginate = false, $perPage = 10){
-        $startTime = Carbon::createFromTime('12', '00', '00')->toTimeString();
+        $startTime = Carbon::createFromTime('12', '00', '00')->setTimezone('Asia/Kolkata')->toTimeString();
         $query = Studio::where([['opening_time', '<=', $startTime], ['closing_time', '>=', $startTime]]);
         return $paginate ? $query->paginate($perPage) : $query->take(3)->get();
     }
 
     public function getEveningStudio($paginate = false, $perPage = 10){
-        $startTime = Carbon::createFromTime('17', '00', '00')->toTimeString();
+        $startTime = Carbon::createFromTime('17', '00', '00')->setTimezone('Asia/Kolkata')->toTimeString();
         $query = Studio::where([['opening_time', '<=', $startTime], ['closing_time', '>=', $startTime]]);
         return $paginate ? $query->paginate($perPage) : $query->take(3)->get();
     }
 
     public function getNightStudio($paginate = false, $perPage = 10){
-        $startTime = Carbon::createFromTime('21', '00', '00')->toTimeString();
+        $startTime = Carbon::createFromTime('21', '00', '00')->setTimezone('Asia/Kolkata')->toTimeString();
         $query = Studio::where([['opening_time', '<=', $startTime], ['closing_time', '>=', $startTime]]);
         return $paginate ? $query->paginate($perPage) : $query->take(3)->get();
     }
@@ -51,12 +55,12 @@ class StudioRepository
     }
 
     public function getStudioSlots($opening_time, $closing_time){
-        $now = Carbon::now();
-        $current = Carbon::now();
+        $now = Carbon::now()->setTimezone('Asia/Kolkata');
+        $current = Carbon::now()->setTimezone('Asia/Kolkata');
         $current->setTimeFromTimeString($opening_time);
-        $start = Carbon::now();
+        $start = Carbon::now()->setTimezone('Asia/Kolkata');
         $start->setTimeFromTimeString($opening_time);
-        $end = Carbon::now();
+        $end = Carbon::now()->setTimezone('Asia/Kolkata');
         $end->setTimeFromTimeString($closing_time);
         $slots = [];
         while (strtotime($start) <= strtotime($current) && strtotime($current) <= strtotime($end)){

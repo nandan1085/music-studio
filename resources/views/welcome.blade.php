@@ -43,7 +43,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="panel-footer text-center"><a href="#">See All</a></div>
+                <div class="panel-footer text-center"><a href="{{ route('studio.list') }}">See All</a></div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">Best After Noon Studios</div>
@@ -65,7 +65,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="panel-footer text-center"><a href="#">See All</a></div>
+                <div class="panel-footer text-center"><a href="{{ route('studio.list') }}">See All</a></div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">Best Evening Studios</div>
@@ -87,7 +87,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="panel-footer text-center"><a href="#">See All</a></div>
+                <div class="panel-footer text-center"><a href="{{ route('studio.list') }}">See All</a></div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">Best Night Studios</div>
@@ -109,7 +109,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="panel-footer text-center"><a href="#">See All</a></div>
+                <div class="panel-footer text-center"><a href="{{ route('studio.list') }}">See All</a></div>
             </div>
         </div>
     </div>
@@ -133,6 +133,9 @@
                       alert('There was an error. You can see response in console');
                   }
               });
+           });
+           $(document).on('click', function () {
+               $('#suggestion-box').html('');
            });
            function generateHtml(data) {
                var html = '<ul class="list-group">';

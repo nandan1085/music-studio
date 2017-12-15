@@ -22,6 +22,11 @@ class StudioController extends Controller
         return view('welcome', compact('studios'));
     }
 
+    public function studioList(){
+        $studios = $this->studioRepo->getStudios();
+        return view('list', compact('studios'));
+    }
+
     public function search(Request $request){
         return response($this->studioRepo->getSearchData($request->string));
     }
