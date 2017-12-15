@@ -18,7 +18,7 @@ class MusicStudioSeeder extends Seeder
             $name = $faker->company;
             $studio->name = $name;
             $studio->about = $faker->realText();
-            $studio->image = $faker->imageUrl();
+            $studio->image = $faker->imageUrl('100', '100');
             $studio->action_url = strtolower(str_replace(',', '', str_replace(' ', '-', $name)));
             $studio->address = $faker->address;
             $studio->website = $faker->url;

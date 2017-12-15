@@ -1,5 +1,48 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
 
+.bg-white {
+  background-color: #ffffff;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.card {
+  padding: 10px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.padding-20 {
+  padding: 20px;
+}
+
+.margin-t-20 {
+  margin-top: 20px;
+}
+
+.font-25 {
+  font-size: 25px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.

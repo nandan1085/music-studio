@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Studio extends Model
+class Booking extends Model
 {
-
-    protected $table  = 'studios';
+    protected $table  = 'bookings';
 
     protected $guarded = ['id'];
 

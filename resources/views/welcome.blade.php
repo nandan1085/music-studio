@@ -29,7 +29,16 @@
                     <div class="row">
                         @foreach($studios->mornings as $morning)
                             <div class="col-md-4">
-                                h
+                                <div class="card">
+                                    <a href="{{ route('studio.details', ['studio_url' => $morning->action_url]) }}">
+                                        <img class="w-100" src="{{ $morning->image }}" alt="{{ $morning->name }}">
+                                    </a>
+                                    <div class="card-container">
+                                        <h4><b>{{ $morning->name }}</b></h4>
+                                        <p><b>Address:</b> {{ $morning->address }}</p>
+                                        <p><b>Timing:</b> {{ date('h:i A', strtotime($morning->opening_time)) }} - {{ date('h:i A', strtotime($morning->closing_time)) }}</p>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -42,7 +51,16 @@
                     <div class="row">
                         @foreach($studios->noons as $noon)
                             <div class="col-md-4">
-                                h
+                                <div class="card">
+                                    <a href="{{ route('studio.details', ['studio_url' => $noon->action_url]) }}">
+                                        <img class="w-100" src="{{ $noon->image }}" alt="{{ $noon->name }}">
+                                    </a>
+                                    <div class="card-container">
+                                        <h4><b>{{ $noon->name }}</b></h4>
+                                        <p><b>Address:</b> {{ $noon->address }}</p>
+                                        <p><b>Timing:</b> {{ date('h:i A', strtotime($noon->opening_time)) }} - {{ date('h:i A', strtotime($noon->closing_time)) }}</p>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -55,7 +73,16 @@
                     <div class="row">
                         @foreach($studios->evenings as $evening)
                             <div class="col-md-4">
-                                h
+                                <div class="card">
+                                    <a href="{{ route('studio.details', ['studio_url' => $evening->action_url]) }}">
+                                        <img class="w-100" src="{{ $evening->image }}" alt="{{ $evening->name }}">
+                                    </a>
+                                    <div class="card-container">
+                                        <h4><b>{{ $evening->name }}</b></h4>
+                                        <p><b>Address:</b> {{ $evening->address }}</p>
+                                        <p><b>Timing:</b> {{ date('h:i A', strtotime($evening->opening_time)) }} - {{ date('h:i A', strtotime($evening->closing_time)) }}</p>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -68,7 +95,16 @@
                     <div class="row">
                         @foreach($studios->nights as $night)
                             <div class="col-md-4">
-                                h
+                                <div class="card">
+                                    <a href="{{ route('studio.details', ['studio_url' => $night->action_url]) }}">
+                                        <img class="w-100" src="{{ $night->image }}" alt="{{ $night->name }}">
+                                    </a>
+                                    <div class="card-container">
+                                        <h4><b>{{ $night->name }}</b></h4>
+                                        <p><b>Address:</b> {{ $night->address }}</p>
+                                        <p><b>Timing:</b> {{ date('h:i A', strtotime($night->opening_time)) }} - {{ date('h:i A', strtotime($night->closing_time)) }}</p>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -98,14 +134,10 @@
                   }
               });
            });
-           $('input[type="search"]').focusout(function () {
-               $(this).val('');
-               $('#suggestion-box').html('');
-           });
            function generateHtml(data) {
                var html = '<ul class="list-group">';
                $.each(data, function (key, val) {
-                   html = html + '<a href="' + val.action_url + '" class="list-group-item">' + val.name + '</a>'
+                   html = html + '<a href="/studio/' + val.action_url + '" class="list-group-item">' + val.name + '</a>'
                });
                html = html + '</ul>';
                return html;
