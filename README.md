@@ -14,6 +14,7 @@ How To Install
 6. Run $ php artisan make:auth
 7. Run $ php artisan db:seed
 8. Run $ php artisan serve
+9. Open the address in the browser suggested by artisan (ex. http://127.0.0.1:8000)
 
 
 
