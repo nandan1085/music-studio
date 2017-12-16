@@ -34,7 +34,7 @@ class StudioController extends Controller
     public function show($url){
         $studio = $this->studioRepo->getStudioByUrl($url);
         abort_if(empty($studio), 404);
-        $slots  = $this->studioRepo->getStudioSlots($studio->opening_time, $studio->closing_time);
+        $slots  = $this->studioRepo->getStudioSlots($studio->opening_time, $studio->closing_time, $studio->id);
         return view('details', compact('studio', 'slots'));
     }
 

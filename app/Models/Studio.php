@@ -12,4 +12,8 @@ class Studio extends Model
     protected $guarded = ['id'];
 
     protected $primaryKey = 'id';
+
+    public function bookings(){
+        return $this->hasMany(Booking::class, 'studio_id', 'id');
+    }
 }

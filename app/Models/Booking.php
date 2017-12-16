@@ -11,4 +11,8 @@ class Booking extends Model
     protected $guarded = ['id'];
 
     protected $primaryKey = 'id';
+
+    public function studio(){
+        return $this->belongsTo(Studio::class, 'studio_id', 'id');
+    }
 }

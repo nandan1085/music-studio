@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Studio;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class StudioRepository
 {
@@ -54,7 +55,7 @@ class StudioRepository
         return Studio::where('action_url', $url)->first();
     }
 
-    public function getStudioSlots($opening_time, $closing_time){
+    public function getStudioSlots($opening_time, $closing_time, $studio_id){
         $now = Carbon::now()->setTimezone('Asia/Kolkata');
         $current = Carbon::now()->setTimezone('Asia/Kolkata');
         $current->setTimeFromTimeString($opening_time);
@@ -63,9 +64,15 @@ class StudioRepository
         $end = Carbon::now()->setTimezone('Asia/Kolkata');
         $end->setTimeFromTimeString($closing_time);
         $slots = [];
+        $bookingRepo = App::make(BookingRepository::class);
+        $bookings = $bookingRepo->getBookingsForToday($studio_id);
+        $bookedSlots = array_column($bookings->toArray(), 'time');
         while (strtotime($start) <= strtotime($current) && strtotime($current) <= strtotime($end)){
             if(strtotime($now) < strtotime($current)){
-                $slots[] = date('h:i A', strtotime($current));
+                $thisSlot = date('h:i A', strtotime($current));
+                if(!in_array($thisSlot, $bookedSlots)){
+                    $slots[] = $thisSlot;
+                }
             }
             $current->addHour(); // Assuming 1 hour slot
         }

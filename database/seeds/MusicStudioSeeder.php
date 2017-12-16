@@ -23,7 +23,7 @@ class MusicStudioSeeder extends Seeder
             $studio->address = $faker->address;
             $studio->website = $faker->url;
             $time = $faker->time();
-            $diff = rand(2, 8);
+            $diff = rand(5, 14);
             $start = \Carbon\Carbon::createFromDate('2017', '12', '16')->setTimeFromTimeString($time)->setTimezone('Asia/Kolkata');
             $end = \Carbon\Carbon::createFromDate('2017', '12', '16')->setTimeFromTimeString($faker->time())->addHours($diff)->setTimezone('Asia/Kolkata');
             $studio->opening_time = $start;
