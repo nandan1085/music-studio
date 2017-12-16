@@ -6,6 +6,7 @@
         }
     </style>
 @stop
+@section('title', 'Music')
 @section('content')
     <div class="container">
         <div class="row">
